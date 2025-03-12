@@ -135,5 +135,57 @@
         }
     }
 
-
     login();
+
+
+    function addCategory() {
+        global $connection;
+        if (isset($_POST['add-category'])) {
+            $now = now();
+            $author_id = $_SESSION['user_id'];
+            $category = $_POST['category'];
+            $insert_category = "
+                INSERT INTO `categories`(`name`, `author_id`, `created_at`, `updated_at`) 
+                VALUES ('$category','$author_id','$now','$now');
+            ";
+
+            try {
+                $connection->query(query: $insert_category);
+                $message = "success";
+            } catch(mysqli_sql_exception $e){
+                $message = "fail";
+            }
+            header("Location: add-category.php?message=$message");
+        }
+    }
+
+    addCategory();
+
+
+    function viewCategories() {
+        global $connection;
+
+        $select_categories = "
+            SELECT * FROM `categories`;
+        ";
+
+        $result = $connection->query($select_categories);
+
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo '
+                <tr>
+                    <td>'.$row['category_id'].'</td>
+                    <td>'.$row['name'].'</td>
+                    <td>'.$row['created_at'].'</td>
+                    <td>'.$row['updated_at'].'</td>
+                    <td width="150px">
+                        <a href=""class="btn btn-primary">Update</a>
+                        <button type="button" remove-id="1" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Remove
+                        </button>
+                    </td>
+                </tr>
+            ';
+        }
+        
+    }

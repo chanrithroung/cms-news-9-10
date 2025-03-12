@@ -50,13 +50,13 @@
                             <ul>
                                 <li class="parent">
                                     <a class="parent" href="javascript:void(0)">
-                                        <span>MAIN MENU</span>
+                                        <span>Categories</span>
                                         <img src="assets/icon/arrow.png" alt="">
                                     </a>
                                     <ul class="child">
                                         <li>
-                                            <a href="view-post.php">View Post</a>
-                                            <a href="add-post.php">Add New</a>
+                                            <a href="view-categories.php">View Category</a>
+                                            <a href="add-category.php">Add Category</a>
                                         </li>
                                     </ul>
                                 </li>

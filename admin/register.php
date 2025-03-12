@@ -17,7 +17,7 @@
         <?php 
             if( isset($_GET['message'])) {
                 if ($_GET['message'] == 'fail') {
-                    echo "<div class='danger-message my-3'>Fail to Register</div>";
+                    echo "<div class='fail-message my-3'>Fail to Register</div>";
                 }
             } 
         ?>

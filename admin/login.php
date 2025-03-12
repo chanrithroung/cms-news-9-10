@@ -18,7 +18,7 @@
         <form method="post">
             <?php 
                 if (isset($_GET['message'])) {
-                    echo '<div class="danger-message">'.$_GET['message'].'</div>';
+                    echo '<div class="fail-message">'.$_GET['message'].'</div>';
                 }
             ?>
             <label>Name or Email</label>
