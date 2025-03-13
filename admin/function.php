@@ -166,7 +166,15 @@
         global $connection;
 
         $select_categories = "
-            SELECT * FROM `categories`;
+            SELECT c.category_id,
+                c.name,
+                c.created_at,
+                c.updated_at,
+                u.profile
+            FROM 
+                `categories` c 
+                LEFT JOIN `users` u 
+                ON c.author_id = u.id; 
         ";
 
         $result = $connection->query($select_categories);
@@ -178,8 +186,11 @@
                     <td>'.$row['name'].'</td>
                     <td>'.$row['created_at'].'</td>
                     <td>'.$row['updated_at'].'</td>
+                    <td> 
+                        <img style="height: 60px; border-radius: 50%; border: 2px solid blue;" src="http://localhost/myphp/cms-for-student/admin/assets/image/'.$row['profile'].'" alt="author profile" />
+                    </td>
                     <td width="150px">
-                        <a href=""class="btn btn-primary">Update</a>
+                        <a href="update_category.php?id='.$row['category_id'].'" class="btn btn-primary">Update</a>
                         <button type="button" remove-id="1" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Remove
                         </button>
@@ -189,3 +200,13 @@
         }
         
     }
+
+
+    function getDetail($table, $field, $id) {
+        global $connection;
+        $select_query = "SELECT * FROM `$table` WHERE `$field` = '$id';";
+        $result = $connection->query($select_query);
+        return mysqli_fetch_assoc($result);
+    }
+
+    

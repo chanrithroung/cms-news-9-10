@@ -31,13 +31,16 @@
     <!-- @tinyACE -->
     <script src="https://cdn.tiny.cloud/1/5gqcgv8u6c8ejg1eg27ziagpv8d8uricc4gc9rhkbasi2nc4/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
+    <!-- @Bootstrap Icons Link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
 </head>
 <body>
     <main class="admin">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-2">
-                    <div class="content-left">
+                    <div class="content-left position-relative">
                         <div class="wrap-top">
                             <img src="./assets/image/<?php $row['profile'] ?>" alt="">
                             <h5>Jong Deng News</h5>
@@ -74,5 +77,28 @@
                                 </li>
                             </ul>
                         </div>
+                        <a class="btn btn-danger logout-button" data-bs-toggle="modal" href="#exampleModalToggle" style="position: absolute; bottom: 30px; width: 90%" role="button"><i class="bi bi-box-arrow-right"></i> Logout</a>
                     </div>
                 </div>
+
+
+
+
+
+
+
+<div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalToggleLabel">Are you sure you want to logout?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+        <a href="logout.php" class="btn btn-outline-danger">Confirm Logout</a>
+      </div>
+    </div>
+  </div>
+</div>

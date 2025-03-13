@@ -20,6 +20,7 @@
                                             <th>Name</th>
                                             <th>Created At</th>
                                             <th>Udated At</th>
+                                            <th>Author Profile</th>
                                             <th>Actions</th>
                                         </tr>
                                         <?php viewCategories(); ?>
