@@ -43,8 +43,8 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <form action="" method="post">
-                                                        <input type="hidden" class="value_remove" name="remove_id">
-                                                        <button type="submit" class="btn btn-danger">Yes</button>
+                                                        <input type="" class="value_remove" name="remove_id">
+                                                        <input class="btn btn-danger" name="btn-delete-category" type="submit" value="Yes">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>  
                                                     </form>
                                                 </div>

@@ -19,6 +19,7 @@
                                             }
                                         ?>
                                         <label>Category</label>
+                                        <input name="id" value="<?php echo $id ?>" type="hidden">
                                         <input value="<?php echo $category['name'] ?>" name="category" type="text" class="form-control">
                                     </div>
                                     <input name="update-category" type="submit" class="btn btn-primary" value="Update Category">

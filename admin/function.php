@@ -191,7 +191,7 @@
                     </td>
                     <td width="150px">
                         <a href="update_category.php?id='.$row['category_id'].'" class="btn btn-primary">Update</a>
-                        <button type="button" remove-id="1" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" remove-id="'.$row['category_id'].'" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Remove
                         </button>
                     </td>
@@ -209,4 +209,33 @@
         return mysqli_fetch_assoc($result);
     }
 
+
+    function updateCategory() {
+        global $connection;
+        if (isset($_POST['update-category'])) {
+            $id = $_POST['id'];
+            $name = $_POST['category'];
+            $now  = now();
+
+            $update_category_query = "
+                UPDATE `categories` SET `name` = '$name',`updated_at` = '$now' WHERE `category_id` = '$id';
+            ";
+            $connection->query($update_category_query);
+            header("Location: view-categories.php");
+        }
+    }
+
+    updateCategory();
     
+
+
+    function deleteCategory() {
+        global $connection;
+        if (isset($_POST['btn-delete-category'])) {
+            $id = $_POST['remove_id'];
+            $connection->query("UPDATE  FROM `categories` WHERE `category_id` = $id;");
+        }
+    }
+
+
+    deleteCategory();
