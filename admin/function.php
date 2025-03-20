@@ -226,16 +226,87 @@
     }
 
     updateCategory();
-    
 
 
     function deleteCategory() {
         global $connection;
         if (isset($_POST['btn-delete-category'])) {
             $id = $_POST['remove_id'];
-            $connection->query("UPDATE  FROM `categories` WHERE `category_id` = $id;");
+            $connection->query("DELETE FROM `categories` WHERE `category_id` = $id;");
+        }
+    }
+
+    function getCategories() {
+        global $connection;
+
+        $result = $connection->query("SELECT `name`, `category_id` FROM `categories` ORDER BY `category_id` DESC");
+        while($row = mysqli_fetch_assoc($result)) {
+            $name = $row['name'];
+            $category_id = $row['category_id'];
+            echo '<option value="'.$category_id.'">'.$name.'</option>';
         }
     }
 
 
     deleteCategory();
+
+
+
+    // Add news 
+    function addNews() {
+        global $connection;
+        if(isset($_POST['btn-add-news'])) {
+            $title = $_POST['title'];
+            $description = $_POST['description'];
+            $pin = $_POST['pin'];
+            $category_id = $_POST['category_id'];
+            $sourceFile = $_FILES['thumbnail'];
+            $thumbnail = fileUploader($sourceFile);
+            $now = now();
+            $author_id = $_SESSION['user_id'];
+
+            $insert_news_query = "
+                INSERT INTO `news`(`title`, `description`, `thumbnail`, `author_id`, `pined`, `isDeleted`,  `created_at`, `updated_at`, `category_id`)
+                VALUES 
+                ('$title','$description','$thumbnail','$author_id','$pin','0','$now','$now', '$category_id');
+            ";
+
+            $connection->query($insert_news_query);
+            header("Location: add-news.php?status=success");
+        }
+    }
+
+    addNews();
+
+    function viewNews() {
+        global $connection;
+        $select_query = "
+            SELECT 
+                n.id as newsId,
+                n.title,
+                n.thumbnail,
+                n.created_at,
+                n.updated_at,
+                n.viewer,
+                c.name
+            FROM `news` n LEFT JOIN `categories` c ON n.`category_id` = c.`category_id` WHERE n.`isDeleted` <> 1 ORDER BY n.id DESC;";
+        $result = $connection->query($select_query);
+
+        while($row = mysqli_fetch_assoc($result)) {
+            echo '<tr class="align-middle">
+                    <td><div class="title">'.$row['title'].'</div></td>
+                    <td>'.$row['name'].'</td>
+                    <td><img style="width: 60px;" src="http://localhost/myphp/cms-for-student/admin/assets/image/'.$row['thumbnail'].'"></td>
+                    <td> <span class="hightlight me-3">'.$row['viewer'].'<span> <i class="bi bi-eye"></i></td>
+                    <td> <span class="hightlight">'.$row['created_at'].'<span> </td>
+                    <td> <span class="hightlight-yellow">'.$row['updated_at'].'<span> </td>
+                    <td width="150px">
+                        <a href=""class="btn btn-primary">Update</a>
+                        <button type="button" remove-id="1" class="btn btn-danger btn-remove" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Remove
+                        </button>
+                    </td>
+                </tr>';
+        }
+
+    }

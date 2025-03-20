@@ -15,6 +15,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Admin Dashboard</title>
 
     <!-- @theme style -->
@@ -33,7 +34,31 @@
 
     <!-- @Bootstrap Icons Link -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        .hightlight {
+            display: block;
+            background-color: rgba(30, 143, 255, 0.08) !important;
+            color: dodgerblue !important;
+            border-radius: 8px;
+            width: fit-content;
+            padding: 2px 12px;
+        }
+        .hightlight-yellow {
+            display: block;
+            background-color: rgba(255, 225, 30, 0.08) !important;
+            color:rgb(235, 207, 30)  !important;
+            border-radius: 8px;
+            width: fit-content;
+            padding: 2px 12px;
+        }
 
+        .title {
+            width: 250px;
+            text-wrap: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    </style>
 </head>
 <body>
     <main class="admin">
@@ -60,6 +85,18 @@
                                         <li>
                                             <a href="view-categories.php">View Category</a>
                                             <a href="add-category.php">Add Category</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="parent">
+                                    <a class="parent" href="javascript:void(0)">
+                                        <span>News</span>
+                                        <img src="assets/icon/arrow.png" alt="">
+                                    </a>
+                                    <ul class="child">
+                                        <li>
+                                            <a href="view-news.php">View News</a>
+                                            <a href="add-news.php">Add News</a>
                                         </li>
                                     </ul>
                                 </li>

@@ -9,21 +9,20 @@
                         <div class="bottom view-post">
                             <figure>
                                 <form method="post" enctype="multipart/form-data">
-                                    <!-- <div class="block-search">
-                                        <input type="text" class="form-control" placeholder="SEARCH HERE">
-                                        <button type="submit">
-                                        <img src="search.png" alt=""></button>
-                                    </div> -->
+                                 
                                     <table class="table" border="1px">
                                         <tr>
-                                            <th>Category ID</th>
-                                            <th>Name</th>
-                                            <th>Created At</th>
-                                            <th>Udated At</th>
-                                            <th>Author Profile</th>
+                                            <th>Title</th>
+                                            <th>Categories</th>
+                                            <th>Thumbnail</th>
+                                            <th>Viewer</th>
+                                            <th>Publish Date</th>
+                                            <th>Updated At</th>
                                             <th>Actions</th>
                                         </tr>
-                                        <?php viewCategories(); ?>
+                                        <?php 
+                                            viewNews();
+                                        ?>  
                                     </table>
                                     <ul class="pagination">
                                         <li>
@@ -44,7 +43,7 @@
                                                 <div class="modal-footer">
                                                     <form action="" method="post">
                                                         <input type="hidden" class="value_remove" name="remove_id">
-                                                        <input class="btn btn-danger" name="btn-delete-category" type="submit" value="Yes">
+                                                        <button type="submit" class="btn btn-danger">Yes</button>
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>  
                                                     </form>
                                                 </div>
